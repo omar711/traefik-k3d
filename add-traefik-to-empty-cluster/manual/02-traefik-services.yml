@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik-dashboard-service
+  namespace: kurtosis-engine-1b7b7957f99b42bc8388ec37fa17c061
+
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 9000
+      targetPort: dashboard
+  selector:
+    app: traefik
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik-web-service
+  namespace: kurtosis-engine-1b7b7957f99b42bc8388ec37fa17c061
+
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: web
+      port: 80
+  selector:
+    app: traefik
