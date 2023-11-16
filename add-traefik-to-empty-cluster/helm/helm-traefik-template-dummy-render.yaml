@@ -105,7 +105,7 @@ spec:
     app.kubernetes.io/name: traefik
     app.kubernetes.io/instance: kurtosis-kurtosis-engine-08c310fef53441fe87973f33d045b58b
   ports:
-  - port: 8080
+  - port: 80
     name: "web"
     targetPort: web
     protocol: TCP
@@ -187,7 +187,7 @@ spec:
           containerPort: 9000
           protocol: "TCP"
         - name: "web"
-          containerPort: 8000
+          containerPort: 80
           protocol: "TCP"
         - name: "websecure"
           containerPort: 8443
@@ -208,7 +208,7 @@ spec:
           - "--global.sendanonymoususage"
           - "--entrypoints.metrics.address=:9100/tcp"
           - "--entrypoints.traefik.address=:9000/tcp"
-          - "--entrypoints.web.address=:8000/tcp"
+          - "--entrypoints.web.address=:80/tcp"
           - "--entrypoints.websecure.address=:8443/tcp"
           - "--api.dashboard=true"
           - "--ping=true"
